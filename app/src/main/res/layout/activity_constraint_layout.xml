@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.huanbei_dev4.aboutlayoutlearnapplication.ConstraintLayoutActivity">
+    <TextView
+        android:id="@+id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="19dp"
+        android:text="view"
+        android:textColor="#333"
+        android:visibility="visible"
+        app:layout_editor_absoluteX="50dp"
+        app:layout_editor_absoluteY="10dp"
+        tools:layout_editor_absoluteX="51dp"
+        tools:layout_editor_absoluteY="10dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:text="在iew 的右边"
+        app:layout_constraintLeft_toRightOf="@+id/view"
+        app:layout_editor_absoluteY="10dp"
+        tools:layout_editor_absoluteY="10dp" />
+
+    <TextView
+        android:id="@+id/tv_center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="居中的View,对齐于view的底部"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
+    <!--偏移率 必须配合水平居中和竖直居中使用-->
+    <TextView
+        android:id="@+id/tv_center_horizontal_and_bias"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="偏移率 bias 搭配上面的view的属性使用(横向偏移0.2 竖直偏移0.1，偏移率 必须配合水平居中和竖直居中使用)"
+        android:textColor="#aa0000"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_center_horizontal" />
+    <!--宽高有比率 layout_constraintDimentionRatio
+    至少将宽高其中一个属性设置为0 然后设置比率，
+    比率可以是浮点型也可以直接是比例-->
+    <TextView
+        android:id="@+id/tv_constraint_ratio"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:background="#aaeeee"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="宽高比例为 ：0.2的textview"
+        android:textColor="#aa0000"
+        app:layout_constraintDimensionRatio="1:0.2"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_center_horizontal_and_bias" />
+    <!--Guideline，引导线。当组件约束，使用Guideline为target时，以帮助定位组件。不占用实际控件-->
+    <!--Guideline主要属性有
+    android:orientation、 （Guideline的方向 是水平的还是竖直的， m用于控件定位，水平定位还是竖直定位）
+    layout_constraintGuide_begin、（离开始的距离（左边或者上边 取决于方向 orientation））
+    layout_constraintGuide_end、  （离开始的距离（右边或者下边 取决于方向 orientation））
+    layout_constraintGuide_percent（百分比，是横向的百分比还是竖向的百分比 取决于方向 orientation））-->
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="150dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="相对于Guideline 向上距离150dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+    <TextView
+        android:id="@+id/view_gone"
+        android:layout_width="20dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="10dp"
+        android:text="view_goe"
+        android:textColor="#333"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_editor_absoluteX="50dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="在iewv_gone 的右边"
+        app:layout_constraintLeft_toRightOf="@id/view_gone"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_goneMarginLeft="10dp" />
+    <!--响应方向的铺满，设置相应的宽/高为0 然后设置左右/上下 的属性-->
+    <TextView
+        android:id="@+id/tv_horizontal_match"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="#999"
+        android:gravity="center"
+        android:text="横向铺满"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+    <!--链
+    layout_constraintHorizontal_chainStyle
+    spread - 元素将被展开（默认样式）
+    加权链 - 在spread模式下，如果某些小部件设置为MATCH_CONSTRAINT，则它们将拆分可用空间
+    spread_inside - 类似，但链的端点将不会扩展
+    packed - 链的元素将被打包在一起。 孩子的水平或垂直偏差属性将影响包装元素的定位
+    -->
+    <Button
+        android:id="@+id/buttonA"
+        android:layout_width="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_horizontal_match"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintRight_toLeftOf="@+id/buttonB"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <Button
+        android:id="@+id/buttonB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        app:layout_constraintTop_toBottomOf="@id/tv_horizontal_match"
+        android:layout_marginTop="10dp"
+        app:layout_constraintLeft_toRightOf="@+id/buttonA"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <Button
+        android:id="@+id/buttonC"
+        android:layout_width="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/buttonA"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:text="Button C"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintRight_toLeftOf="@+id/buttonD"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <Button
+        android:id="@+id/buttonD"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Button D"
+        android:layout_marginRight="10dp"
+        app:layout_constraintTop_toBottomOf="@id/buttonA"
+        android:layout_marginTop="10dp"
+        app:layout_constraintLeft_toRightOf="@+id/buttonC"
+        app:layout_constraintRight_toRightOf="parent"/>
+    <!--
+      链的默认行为是在可用空间中平均分配元素。
+      如果一个或多个元素使用MATCH_CONSTRAINT，
+      它们将使用剩余的空白空间（在它们之间相等）。
+      属性layout_constraintHorizontal_weight
+      和layout_constraintVertical_weight
+      将决定这些都设置了MATCH_CONSTRAINT的View如何分配空间。
+      例如，在包含使用MATCH_CONSTRAINT的两个元素的链上，
+      第一个元素使用权重为2，第二个元素的权重为1，
+      第一个元素占用的空间将是第二个元素的两倍-->
+    <Button
+        android:id="@+id/buttonE"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Button E"
+        app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintRight_toLeftOf="@+id/buttonF"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/buttonC"
+        android:layout_marginLeft="10dp" />
+
+    <Button
+        android:id="@+id/buttonF"
+        android:layout_width="0dp"
+        app:layout_constraintHorizontal_weight="1"
+        android:layout_height="wrap_content"
+        android:text="Button F"
+        app:layout_constraintTop_toBottomOf="@id/buttonD"
+        android:layout_marginTop="10dp"
+        app:layout_constraintLeft_toRightOf="@+id/buttonE"
+        android:layout_marginRight="10dp"
+        app:layout_constraintRight_toRightOf="parent"/>
+</android.support.constraint.ConstraintLayout>
